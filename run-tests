@@ -26,13 +26,9 @@ my $luajit_prefix = shift or
 
 my $valgrind = $opts{v};
 
-my $luajit = shift;
-my $cc = shift // 'gcc';
-my $cxx = shift // 'g++';
-
-if (!defined $luajit) {
-    $luajit = glob "$luajit_prefix/bin/luajit-2.1*";
-}
+my $cc = 'gcc';
+my $cxx = 'g++';
+my $luajit = glob "$luajit_prefix/bin/luajit-2.1*";
 
 if (!$luajit || !-x $luajit) {
     die "cannot find the luajit binary under $luajit_prefix/bin/";
